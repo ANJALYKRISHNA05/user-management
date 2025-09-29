@@ -1,7 +1,6 @@
 import { validationResult } from "express-validator";
 import User from "../models/User.js";
 
-
 export const getAllUsers = async (req, res) => {
   try {
     const search = req.query.search || "";
@@ -19,7 +18,6 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-
 export const updateUser = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -33,7 +31,6 @@ export const updateUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
 
     if (user._id.toString() !== req.user._id.toString() && !req.user.isAdmin) {
       return res.status(403).json({ message: "Not authorized" });
@@ -54,7 +51,6 @@ export const updateUser = async (req, res) => {
   }
 };
 
-
 export const deleteUser = async (req, res) => {
   try {
     const userId = req.params.id;
@@ -73,7 +69,6 @@ export const deleteUser = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
 
 export const addUser = async (req, res) => {
   const errors = validationResult(req);

@@ -6,6 +6,7 @@ import Login from "./pages/login/login"
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import UserManagement from './pages/UserManagement/UserManagement';
 
 
 import Navbar from "./components/Navbar";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/dashboard" element={<ProtectedAdmin><Dashboard /></ProtectedAdmin>} />
+        <Route path='/userManagement' element={<ProtectedAdmin><UserManagement /></ProtectedAdmin>} />
         </Routes>
     </Router>
       

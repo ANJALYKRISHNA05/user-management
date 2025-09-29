@@ -38,6 +38,15 @@ const Navbar = () => {
 
           {user.isAdmin ? (
   <>
+      <Link
+      to="/userManagement"
+      className="px-3 py-1 sm:px-4 sm:py-2 rounded-md bg-sky-600 hover:bg-sky-700 text-white transition"
+
+
+    >
+      User Management
+    </Link>
+    
     <Link
       to="/dashboard"
       className="px-3 py-1 sm:px-4 sm:py-2 rounded-md bg-purple-600 hover:bg-purple-700 transition"
