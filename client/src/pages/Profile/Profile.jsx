@@ -6,11 +6,7 @@ function Profile() {
   const { user, isLoading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState({
-    username: user?.username || "",
-    email: user?.email || "",
-    profilePic: null,
-  });
+  const [formData, setFormData] = useState({username: user?.username || "",email: user?.email || "",profilePic: null,});
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -31,6 +31,8 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+
+
 export const updateProfile = createAsyncThunk(
   "auth/updateUser",
   async (userData, thunkAPI) => {
@@ -145,3 +147,4 @@ const authSlice = createSlice({
 
 export const { logout, clearError } = authSlice.actions;
 export default authSlice.reducer;
+

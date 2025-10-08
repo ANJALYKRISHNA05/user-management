@@ -19,7 +19,6 @@ export const getAllUsers = createAsyncThunk(
   }
 );
 
-
 export const updateUser = createAsyncThunk(
   "admin/updateUser",
   async ({ id, username, email }, thunkAPI) => {
@@ -70,6 +69,7 @@ export const addUser = createAsyncThunk(
     }
   }
 );
+
 
 
 const adminSlice = createSlice({

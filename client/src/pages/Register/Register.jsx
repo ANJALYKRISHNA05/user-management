@@ -4,16 +4,18 @@ import { registerUser } from "../../utils/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
-  const [formData, setFormData] = useState({username: "",email: "",password: "",});
-
+  const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  const [confirmPassword, setConfirmPassword] = useState(""); 
   const [success, setSuccess] = useState(""); 
+  const [localError, setLocalError] = useState(""); 
+
   const { user, isLoading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
-      setSuccess("Account created successfully! "); 
+      setSuccess("Account created successfully!"); 
       setTimeout(() => {
         if (user.isAdmin) {
           navigate("/dashboard");
@@ -26,7 +28,15 @@ function Register() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    setSuccess(""); 
+    setLocalError(""); 
+    setSuccess("");
+
+  
+    if (formData.password !== confirmPassword) {
+      setLocalError("Passwords do not match");
+      return;
+    }
+
     dispatch(registerUser(formData));
   };
 
@@ -39,13 +49,12 @@ function Register() {
 
         <form onSubmit={handleRegister} className="space-y-5">
 
-          {error && (
+          {(error || localError) && (
             <p className="text-red-600 text-sm text-center font-medium">
-              {error}
+              {localError || error}
             </p>
           )}
 
-       
           {success && (
             <p className="text-green-600 text-sm text-center font-medium">
               {success}
@@ -96,6 +105,20 @@ function Register() {
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
+              required
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className="text-sm font-semibold text-gray-700 mb-1">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              value={confirmPassword}
+              placeholder="••••••••"
+              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>
