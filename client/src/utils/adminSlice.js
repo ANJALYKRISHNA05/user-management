@@ -21,12 +21,12 @@ export const getAllUsers = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   "admin/updateUser",
-  async ({ id, username, email }, thunkAPI) => {
+  async ({ id, username}, thunkAPI) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
         `${API_URL}/update/${id}`,
-        { username, email },
+        { username },
         {
           headers: { Authorization: `Bearer ${token}` },
         }

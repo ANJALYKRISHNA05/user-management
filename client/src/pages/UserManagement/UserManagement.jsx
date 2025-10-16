@@ -8,7 +8,7 @@ const Dashboard = () => {
 
   const [search, setSearch] = useState("");
   const [editingUserId, setEditingUserId] = useState(null);
-  const [editForm, setEditForm] = useState({ username: "", email: "" });
+  const [editForm, setEditForm] = useState({ username: ""});
   const [showAddForm, setShowAddForm] = useState(false);
   const [newUserForm, setNewUserForm] = useState({ username: "", email: "", password: "" });
   const [deleteUserId, setDeleteUserId] = useState(null); 
@@ -24,13 +24,13 @@ const Dashboard = () => {
 
   const handleEdit = (user) => {
     setEditingUserId(user._id);
-    setEditForm({ username: user.username, email: user.email });
+    setEditForm({ username: user.username});
   };
 
   const handleSave = () => {
     dispatch(updateUser({ id: editingUserId, ...editForm }));
     setEditingUserId(null);
-    setEditForm({ username: "", email: "" });
+    setEditForm({ username: ""});
   };
 
  
@@ -162,19 +162,12 @@ const Dashboard = () => {
                       }
                       className="border px-2 py-1 rounded-md w-full"
                     />
-                    <input
-                      type="email"
-                      value={editForm.email}
-                      onChange={(e) =>
-                        setEditForm({ ...editForm, email: e.target.value })
-                      }
-                      className="border px-2 py-1 rounded-md w-full"
-                    />
+                 
                   </div>
                 ) : (
                   <p className="font-medium text-gray-800 break-words">
                     {user.username}{" "}
-                    <span className="text-gray-500">({user.email})</span>
+                
                     {user.isAdmin && (
                       <span className="ml-2 text-xs bg-yellow-300 text-yellow-800 px-2 py-0.5 rounded">
                         Admin

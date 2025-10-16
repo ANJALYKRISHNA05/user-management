@@ -17,6 +17,7 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+
 export const loginUser = createAsyncThunk(
   "auth/login",
   async (userData, thunkAPI) => {
@@ -68,6 +69,7 @@ export const updateProfile = createAsyncThunk(
     }
   }
 );
+
 
 const storedUser = localStorage.getItem("user");
 const storedToken = localStorage.getItem("token");

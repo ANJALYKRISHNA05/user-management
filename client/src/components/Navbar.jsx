@@ -78,6 +78,7 @@ const Navbar = () => {
 )}
 
 
+
             <button
               onClick={() => dispatch(logout())}
               className="px-3 py-1 sm:px-4 sm:py-2 rounded-md bg-red-600 hover:bg-red-700 transition"
